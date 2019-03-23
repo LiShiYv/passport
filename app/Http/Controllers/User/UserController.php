@@ -34,9 +34,9 @@ public function login(Request $request){
         if($id2){
             if(password_verify($pass,$id2->pwd)){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-                setcookie('token',$token,time()+86400,'/','lsy.52self.cn',false,true);
-                setcookie('u_name',$id2->u_name,time()+86400,'/','lsy.52self.cn',false,true);
-                setcookie('id',$id2->id,time()+86400,'/','lsy.52self.cn',false,true);
+                setcookie('token',$token,time()+86400,'/','sub.52xiuge.com',false,true);
+                setcookie('u_name',$id2->u_name,time()+86400,'/','sub.52xiuge.com',false,true);
+                setcookie('id',$id2->id,time()+86400,'/','sub.52xiuge.com',false,true);
                 $redis_key_web_token='str:u:token:'.$id2->uid;
                 Redis::del($redis_key_web_token);
                 Redis::hSet($redis_key_web_token,'web',$token);
