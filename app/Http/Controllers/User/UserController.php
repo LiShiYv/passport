@@ -37,7 +37,7 @@ public function login(Request $request){
                 setcookie('token',$token,time()+86400,'/','sub.52xiuge.com',false,true);
                 setcookie('u_name',$res->u_name,time()+86400,'/','sub.52xiuge.com',false,true);
                 setcookie('id',$res->id,time()+86400,'/','sub.52xiuge.com',false,true);
-                $redis_key_web_token='str:u:token:'.$res->uid;
+                $redis_key_web_token='str:u:token:'.$res->id;
                 Redis::del($redis_key_web_token);
                 Redis::hSet($redis_key_web_token,'web',$token);
 
