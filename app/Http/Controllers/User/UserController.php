@@ -48,8 +48,8 @@ public function login(Request $request){
 
      
                  Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>1]);
-                 Redis::expire($redis_key_web_token,30);
-                 if(empty($redis_key_web_token)){
+                 $res=Redis::expire($redis_key_web_token,30);
+                 if(empty($res)){
                     Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>0]);
                  }
                 
