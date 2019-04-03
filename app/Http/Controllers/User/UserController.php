@@ -40,7 +40,7 @@ public function login(Request $request){
                 $redis_key_web_token='str:u:token:'.$id2->id;
                // var_dump($redis_key_web_token);
                 Redis::del($redis_key_web_token);
-          Redis::hSet($redis_key_web_token,'web',$token);
+          $res=Redis::hSet($redis_key_web_token,'web',$token);
               //  print_r($redis);die;
            
                //echo $redis;die;
@@ -49,7 +49,10 @@ public function login(Request $request){
      
                  Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>1]);
                  Redis::expire($redis_key_web_token,30);
-               //  Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>0]);
+                 if(empty($res)){
+                    Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>0]);
+                 }
+                
                     //var_dump($res);
                 header("Refresh:3;$r");
                     echo '登录成功';
