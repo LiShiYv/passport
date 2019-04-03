@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//   // return view('home.home');
+//});
 Route::post('/passport','User\UserController@login');
-Route::get('/login','User\UserController@userl');
+
+Route::get('/app-login','User\UserController@userl');

@@ -8,9 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/passport" method="post">
+    <form action="" method="post">
         <h1>登录</h1>
-        {{csrf_field()}}
+
         <table>
             <tr>
                 <td>账号：<input type="text" name="u_name"></td>
