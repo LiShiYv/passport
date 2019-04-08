@@ -28,7 +28,7 @@ public function login(Request $request){
         $pass =$request->input('u_pwd');
         $root=$request->input('u_name');
         $is_app=$request->input('is_app');
-        print_r($is_app);exit;
+       // print_r($is_app);exit;
         $r=$request->input('redirect');
         //var_dump($r);die;
         $id2 = Cmsmodel::where(['u_name'=>$root])->first();
