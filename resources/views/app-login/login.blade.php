@@ -19,7 +19,13 @@
             <td>密码：<input type="password" name="u_pwd"></td>
             <input type="hidden" value="{{$redirect}}" name="redirect">
         </tr>
-
+        <tr>
+        <td> 请选择服务：
+                    <input type="checkbox" name="is_app" value="1" title="安卓">
+                    <input type="checkbox" name="is_app" value="2" title="苹果">
+                    <input type="checkbox" name="is_app" value="3" title="api">    
+                </td>
+            </tr>
     </table>
     <button  type="submit"> 登录</button>
 </form>
