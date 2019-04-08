@@ -27,6 +27,8 @@ public function login(Request $request){
         // echo '<pre>';print_r($_POST);echo '</pre>';
         $pass =$request->input('u_pwd');
         $root=$request->input('u_name');
+        $is_app=$request->input('is_app');
+        print_r($is_app);exit;
         $r=$request->input('redirect');
         //var_dump($r);die;
         $id2 = Cmsmodel::where(['u_name'=>$root])->first();
@@ -49,9 +51,9 @@ public function login(Request $request){
      
                  Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>1]);
                  $res=Redis::expire($redis_key_web_token,30);
-                 if(empty($res)){
-                    Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>0]);
-                 }
+                //  if(empty($res)){
+                //     Cmsmodel::where(['id'=>$id2->id])->update(['is_login'=>0]);
+                //  }
                 
                     //var_dump($res);
                 header("Refresh:3;$r");
